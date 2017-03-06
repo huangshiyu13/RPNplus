@@ -1,7 +1,7 @@
 RPNplus
 ===============
 
-Code accompanying the paper ["Recognition in-the-Tail:Training Detectors for Unusual Pedestrians with Synthetic Imposters"](http://ml.cs.tsinghua.edu.cn:5000/publications/synunity/){:target="_blank"}
+Code accompanying the paper ["Recognition in-the-Tail:Training Detectors for Unusual Pedestrians with Synthetic Imposters"](http://ml.cs.tsinghua.edu.cn:5000/publications/synunity/)
 
 ##Requirement
 - ubuntu or Mac OS
