@@ -46,3 +46,6 @@ Please cite our paper if you use this code in your own work:
   year={2017}
 }
 ```
+
+## Acknowledgement
+* Our code is based on Yinpeng Dong's code and this repo: https://github.com/machrisaa/tensorflow-vgg
