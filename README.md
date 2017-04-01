@@ -36,7 +36,7 @@ python train.py 0
 
 ## Cite
 
-Please cite our paper if you use this code in your own work:
+Please cite our paper if you use this code or our datasets in your own work:
 
 ```
 @article{huang2017recognition,
