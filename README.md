@@ -1,7 +1,7 @@
 RPNplus
 ===============
 
-Code accompanying the paper ["Recognition in-the-Tail:Training Detectors for Unusual Pedestrians with Synthetic Imposters"](http://ml.cs.tsinghua.edu.cn:5000/publications/synunity/). As for the generator for synthetic data, please take this [repo](https://github.com/huangshiyu13/generator_synthetic_data) for reference.
+Code accompanying the paper ["Expecting the Unexpected: Training Detectors for Unusual Pedestrians with Adversarial Imposters"](http://ml.cs.tsinghua.edu.cn:5000/publications/synunity/). As for the generator for synthetic data, please take this [repo](https://github.com/huangshiyu13/generator_synthetic_data) for reference.
 ![](https://raw.githubusercontent.com/huangshiyu13/RPNplus/master/readme_img/rpn.jpg)
 ## Requirement
 - ubuntu or Mac OS
