@@ -44,7 +44,7 @@ Please cite our paper if you use this code or our datasets in your own work:
 
 ```
 @article{huang2017recognition,
-  title={Recognition in-the-Tail: Training Detectors for Unusual Pedestrians with Synthetic Imposters},
+  title={Expecting the Unexpected: Training Detectors for Unusual Pedestrians with Adversarial Imposters},
   author={Huang, Shiyu and Ramanan, Deva},
   journal={arXiv preprint arXiv:1703.06283},
   year={2017}
