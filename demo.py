@@ -8,7 +8,7 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 from image_pylib import IMGLIB
-
+from datetime import datetime  
 import data_engine
 
 VGG_MEAN = [103.939, 116.779, 123.68]
@@ -219,7 +219,14 @@ if __name__ == '__main__':
             print imageName[0]
             im = Image.open(imageName[0])
             pix = np.array(im.getdata()).reshape(1, image_height, image_width, 3).astype(np.float32)
+            
+            start_ = datetime.utcnow()  
             [test_prob, test_bbox_pred] = sess.run([cnn.prob, cnn.bbox_pred], feed_dict={image: pix})
+            
+            end_ = datetime.utcnow()  
+            c = (end_ - start_)  
+            print ('%s uses %d milliseconds' % (imageName[0] , c.microseconds/1000  ) )
+
             bbox = testDeal.rpn_nms(test_prob, test_bbox_pred)
             imglib.read_img(imageName[0])
             imglib.setBBXs(bbox, 'person')
