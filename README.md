@@ -5,8 +5,10 @@ Code accompanying the paper ["Expecting the Unexpected: Training Detectors for U
 ![](https://raw.githubusercontent.com/huangshiyu13/RPNplus/master/readme_img/rpn.jpg)
 ## Requirement
 - ubuntu or Mac OS
-- tensorflow==0.12.0+(with GPU)
+- tensorflow==1.1+(with GPU)
 - pip install image
+- pip install sklearn
+- pip install scipy
 - [image_pylib](https://github.com/huangshiyu13/image_pylib)(This repository should be put under the same folder with RPNplus.)
 
 ## Usage
