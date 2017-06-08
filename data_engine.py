@@ -1,5 +1,5 @@
 
-
+from sklearn.utils.extmath import cartesian
 import numpy as np
 from PIL import Image
 
@@ -470,19 +470,34 @@ def compute_overlap(mat1, mat2):
     else:
         area2 = (mat2[:, 2] - mat2[:, 0]) * (mat2[:, 3] - mat2[:, 1])
 
-    overlap = np.zeros([s2, s1])
-    for i in range(s1):
-        for j in range(s2):
-            x1 = max(mat1[i, 0], mat2[j, 0])
-            y1 = max(mat1[i, 1], mat2[j, 1])
-            x2 = min(mat1[i, 2], mat2[j, 2])
-            y2 = min(mat1[i, 3], mat2[j, 3])
-            w = max(0, x2 - x1)
-            h = max(0, y2 - y1)
-            if mat1[i, 4] == 0:
-                overlap[j, i] = w * h / (area1[i] + area2[j] - w * h)
-            elif mat1[i, 4] == 1:
-                overlap[j, i] = w * h / area2[j]
+    x1 = cartesian([mat1[:, 0], mat2[:, 0]])
+
+    x1 = np.amax(x1, axis=1)
+    x2 = cartesian([mat1[:, 2], mat2[:, 2]])
+    x2 = np.amin(x2, axis=1)
+    com_zero = np.zeros(x2.shape[0])
+    w = x2 - x1
+    w = w - 1
+
+    w = np.maximum(com_zero, w)
+
+    y1 = cartesian([mat1[:, 1], mat2[:, 1]])
+    y1 = np.amax(y1, axis=1)
+    y2 = cartesian([mat1[:, 3], mat2[:, 3]])
+    y2 = np.amin(y2, axis=1)
+    h = y2 - y1
+    h = h - 1
+    h = np.maximum(com_zero, h)
+
+    oo = w * h
+
+    aa = cartesian([area1[:], area2[:]])
+    aa = np.sum(aa, axis=1)
+
+    ooo = oo / (aa - oo)
+
+    overlap = np.transpose(ooo.reshape(s1, s2), (1, 0))
+
     return overlap
 
 def compute_regression(mat1, mat2):

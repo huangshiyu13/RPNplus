@@ -37,11 +37,11 @@ class RPN:
         assert red.get_shape().as_list()[1:] == [image_height, image_width, 1]
         assert green.get_shape().as_list()[1:] == [image_height, image_width, 1]
         assert blue.get_shape().as_list()[1:] == [image_height, image_width, 1]
-        bgr = tf.concat(3, [
+        bgr = tf.concat([
             blue - VGG_MEAN[0],
             green - VGG_MEAN[1],
             red - VGG_MEAN[2],
-        ])
+        ],3)
         assert bgr.get_shape().as_list()[1:] == [image_height, image_width, 3]
         # Conv layer 1
         self.conv1_1 = self.conv_layer_const(bgr, 'conv1_1')
@@ -93,7 +93,7 @@ class RPN:
         self.relu_proposal_5 = tf.nn.relu(self.conv_proposal_5)
         self.weight_dacay += conv_proposal_3_wd + conv_proposal_4_wd + conv_proposal_5_wd
         # Concatrate
-        self.relu_proposal_all = tf.concat(3, [self.relu_proposal_3, self.relu_proposal_4, self.relu_proposal_5])
+        self.relu_proposal_all = tf.concat( [self.relu_proposal_3, self.relu_proposal_4, self.relu_proposal_5],3)
         # RPN_TEST_6(>=7)
 
         self.conv_cls_score, conv_cls_wd = self.conv_layer_new(self.relu_proposal_all, 'conv_cls_score',
@@ -110,7 +110,8 @@ class RPN:
 
         self.prob = tf.nn.softmax(self.cls_score, name="prob")
         self.cross_entropy = tf.reduce_sum(
-            tf.nn.softmax_cross_entropy_with_logits(self.cls_score, label) * label_weight) / tf.reduce_sum(label_weight)
+            tf.nn.softmax_cross_entropy_with_logits(labels=label,
+                                                    logits=self.cls_score) * label_weight) / tf.reduce_sum(label_weight)
 
         bbox_error = tf.abs(self.bbox_pred - bbox_target)
         bbox_loss = 0.5 * bbox_error * bbox_error * tf.cast(bbox_error < 1, tf.float32) + (bbox_error - 0.5) * tf.cast(

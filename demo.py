@@ -40,15 +40,15 @@ class RPN:
         print('build model started')
 
         # Convert RGB to BGR
-        red, green, blue = tf.split(3, 3, rgb)
+        red, green, blue = tf.split(rgb,3, 3)
         assert red.get_shape().as_list()[1:] == [image_height, image_width, 1]
         assert green.get_shape().as_list()[1:] == [image_height, image_width, 1]
         assert blue.get_shape().as_list()[1:] == [image_height, image_width, 1]
-        bgr = tf.concat(3, [
+        bgr = tf.concat( [
             blue - VGG_MEAN[0],
             green - VGG_MEAN[1],
             red - VGG_MEAN[2],
-        ])
+        ],3)
         assert bgr.get_shape().as_list()[1:] == [image_height, image_width, 3]
         # Conv layer 1
         self.conv1_1 = self.conv_layer_const(bgr, 'conv1_1')
@@ -96,7 +96,7 @@ class RPN:
         self.conv_proposal_5 = self.conv_layer(self.conv5_3, 'conv_proposal_5', use_relu=0)
         self.relu_proposal_5 = tf.nn.relu(self.conv_proposal_5)
         # Concatrate
-        self.relu_proposal_all = tf.concat(3, [self.relu_proposal_3, self.relu_proposal_4, self.relu_proposal_5])
+        self.relu_proposal_all = tf.concat([self.relu_proposal_3, self.relu_proposal_4, self.relu_proposal_5],3)
         # RPN_TEST_6(>=7)
 
         self.conv_cls_score = self.conv_layer(self.relu_proposal_all, 'conv_cls_score', use_relu=0)
