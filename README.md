@@ -45,11 +45,12 @@ python train.py 0
 Please cite our paper if you use this code or our datasets in your own work:
 
 ```
-@article{huang2017recognition,
-  title={Expecting the Unexpected: Training Detectors for Unusual Pedestrians with Adversarial Imposters},
-  author={Huang, Shiyu and Ramanan, Deva},
-  journal={arXiv preprint arXiv:1703.06283},
-  year={2017}
+@InProceedings{Huang_2017_CVPR,
+author = {Huang, Shiyu and Ramanan, Deva},
+title = {Expecting the Unexpected: Training Detectors for Unusual Pedestrians With Adversarial Imposters},
+booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {July},
+year = {2017}
 }
 ```
 
