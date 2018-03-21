@@ -26,7 +26,7 @@ class RPN:
             path = os.path.abspath(os.path.join(path, os.pardir))
             path = os.path.join(path, 'vgg16.npy')
             vgg16_npy_path = path
-            print path
+            print (path)
         if rpn_npy_path is None:
             exit()
 
@@ -160,7 +160,7 @@ def checkFile(fileName):
     if os.path.isfile(fileName):
         return True
     else:
-        print fileName, 'is not found!'
+        print (fileName, 'is not found!')
         exit()
 
 
@@ -173,15 +173,15 @@ def checkDir(fileName, creat=False):
         if creat:
             os.mkdir(fileName)
         else:
-            print fileName, 'is not found!'
+            print (fileName, 'is not found!')
             exit()
 
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print 'please input GPU index'
+        print ('please input GPU index')
         exit()
-    gpuNow = '/gpu:'+sys.argv[1]
+    #gpuNow = '/gpu:'+sys.argv[1]
 
 
     modelPath = './models/model.npy'
@@ -203,7 +203,7 @@ if __name__ == '__main__':
 
 
 
-    with tf.device(gpuNow):
+    with tf.device("/cpu:0"):
         sess = tf.Session()  
         image = tf.placeholder(tf.float32, [1, image_height, image_width, 3])
 
@@ -216,7 +216,7 @@ if __name__ == '__main__':
         imageNames = data_engine.getAllFiles(imageDir, '.jpg')
         startTime = time.time()
         for imageName in imageNames:
-            print imageName[0]
+            print (imageName[0])
             im = Image.open(imageName[0])
             pix = np.array(im.getdata()).reshape(1, image_height, image_width, 3).astype(np.float32)
             
