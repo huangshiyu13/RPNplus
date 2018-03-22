@@ -33,7 +33,7 @@ class RPN:
         print('build model started')
 
         # Convert RGB to BGR
-        red, green, blue = tf.split(3, 3, rgb)
+        red, green, blue = tf.split(rgb, 3, 3)
         assert red.get_shape().as_list()[1:] == [image_height, image_width, 1]
         assert green.get_shape().as_list()[1:] == [image_height, image_width, 1]
         assert blue.get_shape().as_list()[1:] == [image_height, image_width, 1]
