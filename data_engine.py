@@ -213,22 +213,22 @@ class CNNData(object):
 
     def load_data(self):
         
-        print 'Load Training Data'
+        print ('Load Training Data')
 
         self.imdb_train = self.load_image()
         self.imdb_train = self.proposal_prepare(self.imdb_train)
-        print 'Done'
+        print ('Done')
 
         self.inds = self.generate_minibatch()
-        print 'Total Batches:', self.inds.shape[0]
+        print ('Total Batches:', self.inds.shape[0])
 
         self.idx = 0
 
     def load_test_data(self, testDataPath):
         
-        print 'Load Testing Data'
+        print ('Load Testing Data')
 
-        print 'Done'
+        print ('Done')
 
     def prepare_data(self):
         if self.idx == self.inds.shape[0]:
