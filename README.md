@@ -1,5 +1,6 @@
 RPNplus
 ===============
+This repository is not going to be updated anymore. The new detection model will be published here: [TARTDetection](https://github.com/huangshiyu13/TARTDetection)
 
 Code accompanying the paper ["Expecting the Unexpected: Training Detectors for Unusual Pedestrians with Adversarial Imposters(CVPR2017)"](https://arxiv.org/pdf/1703.06283). As for the generator for synthetic data, please take this [repo](https://github.com/huangshiyu13/generator_synthetic_data) for reference.
 ![](https://raw.githubusercontent.com/huangshiyu13/RPNplus/master/readme_img/rpn.jpg)
