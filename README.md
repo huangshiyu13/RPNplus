@@ -59,4 +59,4 @@ year = {2017}
 * Our code is based on Yinpeng Dong's code and this repo: https://github.com/machrisaa/tensorflow-vgg
 
 ## Author
-Shiyu Huang(huangsy13@gmail.com)
+Shiyu Huang(huangsy1314@163.com)
